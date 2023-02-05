@@ -1,1 +1,36 @@
+ion-fab-button {
+    --border-radius: none;
+    --border-radius: 20px;
+    --color: #fff;
+    --box-shadow: 0;
 
+
+}
+
+ion-tab-bar {
+    --background: #fff;
+    border-radius: 12px 12px 0 0;
+    display: flex;
+    justify-content: space-between;
+
+    // .new-list {
+    //     position: relative;
+    //     top: -10px;
+    //     max-width: 60px;
+    //     border-radius: 20px;
+    //     --background: var(--ion-color-primary)
+    // }
+
+
+    ion-tab-button {
+        font-family: 'Gilroy';
+        font-weight: bold;
+        color: var(--ion-color-text);
+
+        &.tab-selected {
+            ion-icon {
+                color: var(--ion-color-primary);
+            }
+        }
+    }
+}
