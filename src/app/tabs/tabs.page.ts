@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, EnvironmentInjector, ViewChild } from '@angular/core';
 import { IonTabs } from '@ionic/angular';
 
 @Component({
@@ -10,10 +10,11 @@ export class TabsPage {
   @ViewChild(IonTabs) tabs: IonTabs;
   selected: string = 'tab1';
 
-  constructor() {}
+  constructor(public environmentInjector: EnvironmentInjector) {
+    environmentInjector.get;
+  }
 
   setSelectedTab() {
     this.selected = this.tabs.getSelected();
-    console.log(this.selected);
   }
 }

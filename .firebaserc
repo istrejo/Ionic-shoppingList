@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "shopping-list-app-68aad": {
+      "hosting": {
+        "app": [
+          "shopping-list-app-68aad"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "shopping-list-app-68aad"
+  }
+}
