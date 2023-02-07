@@ -1,9 +1,48 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>login</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-
+<ion-content [fullscreen]="true">
+  <!-- <div class="header"></div> -->
+  <form [formGroup]="form" class="ion-padding" (ngSubmit)="login()">
+    <h2 color="light">Login</h2>
+    <p>Enter your emails and password</p>
+    <ion-list class="ion-margin-bottom">
+      <ion-item>
+        <ion-label position="stacked">E-Mail</ion-label>
+        <ion-input
+          formControlName="email"
+          type="text"
+          placeholder="Enter your email"
+          color="medium"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Password</ion-label>
+        <ion-input
+          formControlName="password"
+          [type]="passwordType"
+          placeholder="Enter your password"
+          color="medium"
+        ></ion-input>
+        <ion-icon
+          class="show-password"
+          slot="end"
+          [name]="eye"
+          (click)="togglePasswordMode()"
+        ></ion-icon>
+      </ion-item>
+    </ion-list>
+    <ion-button
+      class="btn"
+      type="submit"
+      expand="block
+    "
+    >
+      Log in
+    </ion-button>
+    <ion-button class="btn" expand="block" [style.--background]="'#ff0011'">
+      <ion-icon slot="start" name="logo-google"></ion-icon>
+      Log in with google
+    </ion-button>
+    <a class="ion-text-center ion-margin-top" routerLink="/register"
+      >Create a acount</a
+    >
+  </form>
 </ion-content>

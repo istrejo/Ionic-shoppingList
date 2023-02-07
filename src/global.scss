@@ -31,3 +31,24 @@
     font-weight: normal;
     src: url('/assets/fonts/gilroy-regular.ttf'); //mine
 }
+
+* {
+    font-family: 'Gilroy';
+}
+
+.btn {
+    height: 60px;
+    // --background: var(--ion-color-primary);
+    --border-radius: 19px;
+    text-transform: capitalize;
+    font-family: 'Gilroy';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 18px;
+    /* identical to box height, or 100% */
+
+    text-align: center;
+
+    color: #FFF9FF;
+}

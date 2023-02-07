@@ -1,0 +1,74 @@
+ion-content {
+  --background: #FCFCFC;
+  font-family: 'Gilroy';
+}
+
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 302.29px;
+  background: rgba(252, 252, 252, 0.6);
+  backdrop-filter: blur(45px);
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  font-family: 'Gilroy';
+
+
+  h2 {
+    font-family: 'Gilroy';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 29px;
+  }
+
+  p {
+    font-family: 'Gilroy';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 15px;
+    color: #7C7C7C;
+  }
+
+  ion-list {
+    background: transparent;
+  }
+
+  ion-item {
+    --background: transparent;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    ion-label {
+      font-family: 'Gilroy';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 29px;
+      /* identical to box height, or 181% */
+
+
+      --color: #7C7C7C !important;
+    }
+
+    ion-input {
+      font-family: 'Gilroy';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 29px;
+      /* identical to box height, or 161% */
+    }
+  }
+}
