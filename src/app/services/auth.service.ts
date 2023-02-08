@@ -1,10 +1,12 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import {
   Auth,
   createUserWithEmailAndPassword,
   getAuth,
+  GoogleAuthProvider,
   sendEmailVerification,
   sendPasswordResetEmail,
+  signInWithCredential,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
@@ -20,11 +22,14 @@ import {
 import { BehaviorSubject } from 'rxjs';
 import { UserAuth } from '../common/interfaces/auth.interface';
 import { AppModule } from '../app.module';
+import { Platform } from '@ionic/angular';
+import { GoogleAuth } from '@codetrix-studio/capacitor-google-auth';
 
 @Injectable({
   providedIn: AppModule,
 })
 export class AuthService {
+  platform = inject(Platform);
   public _uid: BehaviorSubject<any> = new BehaviorSubject(null);
   currentUser: any;
 
@@ -40,7 +45,18 @@ export class AuthService {
       await signInWithEmailAndPassword(this.afAuth, email, password);
       return user;
     } catch (error) {
-      throw new Error(error.message);
+      let message = '';
+      console.log(
+        '🚀 ~ file: auth.service.ts:57 ~ AuthService ~ login ~ error',
+        error.message
+      );
+      if (error.message === 'Firebase: Error (auth/email-already-in-use).') {
+        message = 'Email already in use';
+      } else {
+        message = 'Network Error';
+      }
+
+      throw new Error(message);
     }
   }
 
@@ -54,21 +70,48 @@ export class AuthService {
 
       return user;
     } catch (error) {
-      throw new Error(error.message);
+      let message = '';
+      console.log(
+        '🚀 ~ file: auth.service.ts:57 ~ AuthService ~ login ~ error',
+        error.message
+      );
+      if (error.message === 'Firebase: Error (auth/user-not-found).') {
+        message = 'User Not Found';
+      } else if (error.message === 'Firebase: Error (auth/wrong-password).') {
+        message = 'Wrong Password';
+      } else {
+        message = 'Network Error';
+      }
+
+      throw new Error(message);
     }
   }
 
-  async loginWithGoogle(): Promise<User> {
+  // Usin Angular fire method
+  // async loginWithGoogle(): Promise<User> {
+  //   try {
+  //     const { user } = await signInWithPopup(
+  //       this.afAuth,
+  //       new GoogleAuthProvider()
+  //     );
+  //     // this.updateUserData(user);
+  //     return user;
+  //   } catch (error) {
+  //     throw new Error(error.message);
+  //   }
+  // }
+
+  // Capacitor google auth plugin
+
+  async loginWithGoogle(): Promise<any> {
     try {
-      const { user } = await signInWithPopup(
-        this.afAuth,
-        new firebase.auth.GoogleAuthProvider()
+      let googleUser = await GoogleAuth.signIn();
+      const credential = GoogleAuthProvider.credential(
+        googleUser.authentication.idToken
       );
-      // this.updateUserData(user);
-      return user;
-    } catch (error) {
-      throw new Error(error.message);
-    }
+      console.log('🚀 ~ credential', credential);
+      return signInWithCredential(this.afAuth, credential);
+    } catch (error) {}
   }
 
   async logout() {
@@ -107,7 +150,7 @@ export class AuthService {
   }
 
   isEmailVerified(user: User) {
-    return user.emailVerified === true ? true : false;
+    return user.emailVerified === true;
   }
 
   private updateUserData(user: UserAuth) {

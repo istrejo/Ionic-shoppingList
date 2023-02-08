@@ -4,7 +4,7 @@
     <h2 color="light">Login</h2>
     <p>Enter your emails and password</p>
     <ion-list class="ion-margin-bottom">
-      <ion-item>
+      <ion-item class="ion-no-padding">
         <ion-label position="stacked">E-Mail</ion-label>
         <ion-input
           formControlName="email"
@@ -13,7 +13,7 @@
           color="medium"
         ></ion-input>
       </ion-item>
-      <ion-item>
+      <ion-item class="ion-no-padding">
         <ion-label position="stacked">Password</ion-label>
         <ion-input
           formControlName="password"
@@ -37,12 +37,17 @@
     >
       Log in
     </ion-button>
-    <ion-button class="btn" expand="block" [style.--background]="'#ff0011'">
+    <ion-button
+      class="btn"
+      expand="block"
+      [style.--background]="'#ff0011'"
+      (click)="loginWithGoogle()"
+    >
       <ion-icon slot="start" name="logo-google"></ion-icon>
       Log in with google
     </ion-button>
     <a class="ion-text-center ion-margin-top" routerLink="/register"
-      >Create a acount</a
+      >Create an acount</a
     >
   </form>
 </ion-content>

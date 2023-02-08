@@ -11,8 +11,12 @@ import {
   AlertController,
   IonicModule,
   LoadingController,
+  Platform,
 } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
+
+import '@codetrix-studio/capacitor-google-auth';
+import { Plugins } from '@capacitor/core/types/global';
 
 @Component({
   selector: 'app-login',
@@ -23,6 +27,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export default class LoginPage implements OnInit {
   authService = inject(AuthService);
+  platform = inject(Platform);
   form: FormGroup;
   hidden: boolean = false;
   passwordType = 'password';
@@ -69,6 +74,17 @@ export default class LoginPage implements OnInit {
       this.loadingCtrl.dismiss();
       this.showAlert(error.message);
     }
+  }
+
+  async loginWithGoogle() {
+    try {
+      console.log('Google singnin');
+      const credentials = await this.authService.loginWithGoogle();
+      console.log('🚀 ~  credentials', credentials);
+      if (credentials) {
+        this.router.navigate(['/tabs']);
+      }
+    } catch (error) {}
   }
 
   async showAlert(message: string) {

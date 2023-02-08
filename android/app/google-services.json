@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "721140284167",
+    "project_id": "shopping-list-app-68aad",
+    "storage_bucket": "shopping-list-app-68aad.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:721140284167:android:6fea623f3cc56141cae3a2",
+        "android_client_info": {
+          "package_name": "com.trejodev.shopping"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "721140284167-3dc49mq1hq7b4f44too3higja0vr3vvr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.trejodev.shopping",
+            "certificate_hash": "081531b8133218ccdf55d44b7349b2212e17308a"
+          }
+        },
+        {
+          "client_id": "721140284167-k25clbb7679lec9a4b8caba4dpp7oaol.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBO4QBwpDJgbqE4OHcBq1tlvpNn2Ew3vy8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "721140284167-g701ce03q51hjgf3kivd3m2d7fufamee.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
